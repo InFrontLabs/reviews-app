@@ -9,19 +9,19 @@
                 <div class="RatingAverage">
     
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
     
                             <div class="RatingAverage__Label">
                                 <span class="larger">4.5</span> out of 5</div>
                             <div class="RatingAverage__Stars">
     
-                               <StarRating :score="3.5" />
+                               <star-rating :score="3.5" font-size="1.7em" color="#ffc120" />
 
                             </div>
     
                         </div>
     
-                        <div class="col-md-4">
+                        <div class="col-md-5">
     
                             <div class="RatingAverage__Breakdown">
     
@@ -90,7 +90,7 @@ export default {
 
         .Reviews__Header__Heading
             color: #222
-            padding: 20px
+            padding: 20px 40px
             margin: 0
             font-weight: 700
 
@@ -100,11 +100,8 @@ export default {
         .Reviews__Main
             padding: 0
 
-        .Reviews__Content
-            padding: 20px
-
     .RatingAverage
-        padding: 20px
+        padding: 20px 40px
         border-bottom: solid 1px #eee
 
     .RatingAverage__Label
@@ -113,10 +110,6 @@ export default {
 
     .larger
         font-size: 2em
-
-    .RatingAverage__Stars
-        font-size: 1.7em
-        color: #ffc120
 
 
 </style>

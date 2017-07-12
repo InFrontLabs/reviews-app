@@ -1288,7 +1288,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.Reviews {\n  background-color: #fff;\n  border: 0;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n  border-radius: 4px;\n}\n.Reviews .Reviews__Header {\n    border-bottom: solid 1px #eee;\n}\n.Reviews .Reviews__Header__Heading {\n    color: #222;\n    padding: 20px;\n    margin: 0;\n    font-weight: 700;\n}\n.Reviews .Reviews__Header__Body {\n    padding: 20px;\n}\n.Reviews .Reviews__Main {\n    padding: 0;\n}\n.Reviews .Reviews__Content {\n    padding: 20px;\n}\n.RatingAverage {\n  padding: 20px;\n  border-bottom: solid 1px #eee;\n}\n.RatingAverage__Label {\n  font-size: 2em;\n  line-height: 1;\n}\n.larger {\n  font-size: 2em;\n}\n.RatingAverage__Stars {\n  font-size: 1.7em;\n  color: #ffc120;\n}\n", ""]);
+exports.push([module.i, "\n.Reviews {\n  background-color: #fff;\n  border: 0;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);\n  border-radius: 4px;\n}\n.Reviews .Reviews__Header {\n    border-bottom: solid 1px #eee;\n}\n.Reviews .Reviews__Header__Heading {\n    color: #222;\n    padding: 20px 40px;\n    margin: 0;\n    font-weight: 700;\n}\n.Reviews .Reviews__Header__Body {\n    padding: 20px;\n}\n.Reviews .Reviews__Main {\n    padding: 0;\n}\n.RatingAverage {\n  padding: 20px 40px;\n  border-bottom: solid 1px #eee;\n}\n.RatingAverage__Label {\n  font-size: 2em;\n  line-height: 1;\n}\n.larger {\n  font-size: 2em;\n}\n", ""]);
 
 // exports
 
@@ -1642,7 +1642,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.CustomerReview {\n  padding: 20px;\n  border-bottom: solid 1px #eee;\n}\n.CustomerReview:last-child {\n    border: 0;\n}\n", ""]);
+exports.push([module.i, "\n.CustomerReview {\n  padding: 20px 40px;\n  border-bottom: solid 1px #eee;\n}\n.CustomerReview:last-child {\n    border: 0;\n}\n.CustomerReview__Title {\n  padding: 0;\n  margin: 0;\n}\n.CustomerReview__Date {\n  color: #aaa;\n  float: right;\n  padding-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -1653,6 +1653,19 @@ exports.push([module.i, "\n.CustomerReview {\n  padding: 20px;\n  border-bottom:
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StarRating__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StarRating___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__StarRating__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1664,20 +1677,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        StarRating: __WEBPACK_IMPORTED_MODULE_0__StarRating___default.a
+    }
+});
 
 /***/ }),
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "CustomerReview"
-  }, [_c('h3', {
+  }, [_vm._m(0), _vm._v(" "), _c('star-rating', {
+    attrs: {
+      "score": 3.5,
+      "font-size": "1.3em",
+      "color": "#ffc120"
+    }
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "CustomerReview__Body"
+  }, [_vm._v("\n        I purchased two (2) of the Samsung UN32J5205 LED TV's to use as monitors using HDMI connection to my Mac Pro computer. The units handle everything beautifully. The Samsung J5205 TV's give my home work station a very professional appearance.\n    ")])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h3', {
     staticClass: "CustomerReview__Title"
-  }, [_vm._v("\n      Review title\n  ")])])
+  }, [_vm._v("\n        Review title\n        "), _c('small', {
+    staticClass: "CustomerReview__Date"
+  }, [_vm._v("XX/XX/XXXX")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h4', [_vm._v("by\n        "), _c('strong', [_vm._v("User")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -1703,15 +1733,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-3"
   }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "RatingAverage__Stars"
-  }, [_c('StarRating', {
+  }, [_c('star-rating', {
     attrs: {
-      "score": 3.5
+      "score": 3.5,
+      "font-size": "1.7em",
+      "color": "#ffc120"
     }
   })], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-5"
   }, [_c('div', {
     staticClass: "RatingAverage__Breakdown"
   }, [_c('RatingProgress', {
@@ -42470,9 +42502,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['score'],
+    props: ['score', 'fontSize', 'color'],
     created: function created() {
         this.classList = [];
         // loop over count
@@ -42496,11 +42532,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.classList), function(className, index) {
+  return _c('div', {
+    style: (("font-size: " + _vm.fontSize + "; color: " + _vm.color))
+  }, _vm._l((_vm.classList), function(className, index) {
     return _c('span', {
       key: index,
       staticClass: "fa",
-      class: className
+      class: className,
+      staticStyle: {
+        "margin-right": "2px"
+      }
     })
   }))
 },staticRenderFns: []}

@@ -1,14 +1,18 @@
 <template>
-    <div>
-        <span class="fa" :class="className" :key="index" v-for="(className, index) in classList">
-    
+    <div :style="`font-size: ${fontSize}; color: ${color}`">
+        <span
+            class="fa"
+            :class="className"
+            style="margin-right: 2px;"
+            :key="index"
+            v-for="(className, index) in classList">
         </span>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['score'],
+    props: ['score', 'fontSize', 'color'],
     created() {
         this.classList = []
         // loop over count
