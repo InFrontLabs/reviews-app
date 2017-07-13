@@ -22,3 +22,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Review::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->realText(50),
+        'body' => $faker->realText(500),
+        'score' => $faker->numberBetween(0, 5),
+        'user_name' => $faker->userName()
+    ];
+});

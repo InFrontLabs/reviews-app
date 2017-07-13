@@ -1,5 +1,5 @@
 <template>
-    <div :style="`font-size: ${fontSize}; color: ${color}`">
+    <div :style="`font-size: ${fontSize};`" class="StarRating">
         <span
             class="fa"
             :class="className"
@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style lang="sass">
-  
+@import '~sass/variables'
+.StarRating .fa
+    color: $brand-highlight
 </style>
 

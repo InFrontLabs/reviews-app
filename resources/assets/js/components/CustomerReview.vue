@@ -2,18 +2,18 @@
     <div class="CustomerReview">
     
         <h3 class="CustomerReview__Title">
-            Review title
+            {{ review.title }}
             <small class="CustomerReview__Date">XX/XX/XXXX</small>
         </h3>
     
-        <star-rating :score="3.5" font-size="1.3em" color="#ffc120" />
+        <star-rating :score="review.score" font-size="1.3em" />
     
         <h4>by
-            <strong>User</strong>
+            <strong>{{ review.user_name }}</strong>
         </h4>
     
         <div class="CustomerReview__Body">
-            I purchased two (2) of the Samsung UN32J5205 LED TV's to use as monitors using HDMI connection to my Mac Pro computer. The units handle everything beautifully. The Samsung J5205 TV's give my home work station a very professional appearance.
+            {{ review.body }}
         </div>
     
     </div>
@@ -22,6 +22,7 @@
 <script>
 import StarRating from './StarRating'
 export default {
+    props: ['review'],
     components: {
         StarRating
     }

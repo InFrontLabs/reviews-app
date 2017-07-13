@@ -1,4 +1,5 @@
-let mix = require('laravel-mix');
+let mix = require('laravel-mix')
+let path = require('path')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +12,16 @@ let mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+  resolve: {
+    alias: {
+      'bootstrap-sass': path.resolve(__dirname, 'node_modules/bootstrap-sass'),
+      sass: path.resolve(__dirname, 'resources/assets/sass/')
+    }
+  }
+})
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .sass('resources/assets/sass/app.scss', 'public/css')
 
 mix.browserSync('product-reviews.dev')

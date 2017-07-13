@@ -5,10 +5,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import store from './store'
 import Reviews from './components/Reviews'
 require('./bootstrap')
 
-window.Vue = require('vue')
+let Vue = require('vue')
+
+Vue.config.productionTip = false
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,8 +19,9 @@ window.Vue = require('vue')
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new window.Vue({
+const app = new Vue({
   el: '#app',
+  store,
   components: {
     Reviews
   }

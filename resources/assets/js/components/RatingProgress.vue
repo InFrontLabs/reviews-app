@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~sass/variables'
+
 .RatingProgress
     display: flex
     flex-direction: row
@@ -45,7 +47,7 @@ export default {
     overflow: hidden
 
 .RatingProgress__Bar
-    background-color: #ffc120
+    background-color: $brand-highlight
     height: 100%
     transition: width 200ms ease-in-out
     width: 0%
