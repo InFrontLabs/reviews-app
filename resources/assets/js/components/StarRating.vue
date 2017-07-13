@@ -13,21 +13,24 @@
 <script>
 export default {
     props: ['score', 'fontSize', 'color'],
-    created() {
-        this.classList = []
-        // loop over count
-        for (let i = 1; i <= 5; i++) {
-            let className = 'fa fa-star-o'
+    computed: {
+        classList() {
+            console.log(this.score)
+            let classList = []
+            // loop over count
+            for (let i = 1; i <= 5; i++) {
+                let className = 'fa fa-star-o'
 
-            if (this.score >= i) {
-                className = 'fa fa-star';
-            } else if (this.score >= (i - 0.5)) {
-                className = 'fa fa-star-half-o';
+                if (this.score >= i) {
+                    className = 'fa fa-star';
+                } else if (this.score >= (i - 0.5)) {
+                    className = 'fa fa-star-half-o';
+                }
+                classList.push(className)
             }
-            this.classList.push(className)
-        }
 
-        console.log(this.classList)
+            return classList
+        }
     }
 }
 </script>

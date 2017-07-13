@@ -1,22 +1,22 @@
 <template>
     <div class="RatingProgress">
         <span class="RatingProgress__Label">
-            {{ label }}
+            {{ score.score }} stars
         </span>
         <div class="RatingProgress__Bkg">
-            <div class="RatingProgress__Bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{ width: progress }">
-                <span class="sr-only">{{ progress }} Complete</span>
+            <div class="RatingProgress__Bar" role="progressbar" :aria-valuenow="score.percentage" aria-valuemin="0" aria-valuemax="100" :style="{ width: `${score.percentage}%` }">
+                <span class="sr-only">{{ score.percentage }} Complete</span>
             </div>
         </div>
         <span class="RatingProgress__Label">
-            {{ count }}
+            {{ score.count }}
         </span>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['label', 'count', 'progress']
+    props: ['score']
 }
 </script>
 
@@ -49,7 +49,7 @@ export default {
 .RatingProgress__Bar
     background-color: $brand-highlight
     height: 100%
-    transition: width 200ms ease-in-out
+    transition: width 500ms ease-in-out
     width: 0%
 
 </style>

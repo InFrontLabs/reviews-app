@@ -22,5 +22,55 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/reviews', function (Request $request) {
-   return \App\Review::limit(20)->get();
+   return \App\Review::limit(20)->orderBy('published_at', 'desc')->get();
+});
+
+Route::get('/scores', function (Request $request) {
+
+    $average = App\Review::where('score', '>', 0)->avg('score');
+    $average = round($average * 2) / 2;
+
+    $scores = DB::table('reviews')
+                     ->select(DB::raw('score, count(*) as count'))
+                     ->where('score', '>', 0)
+                     ->groupBy('score')
+                     ->orderBy('score', 'desc')
+                     ->get();
+
+   $total = $scores->sum('count');
+
+   $scores = $scores->map(function($item, $key) use ($total) {
+     $item->percentage = $item->count / $total * 100;
+     return $item;
+   });
+
+   return compact('scores', 'average');
+
+//    return [
+//     [
+//         "score" => 5,
+//         "count" => 900,
+//         "percentage" => 90
+//     ],
+//     [
+//         "score" => 4,
+//         "count" => 750,
+//         "percentage" => 75
+//     ],
+//     [
+//         "score" => 3,
+//         "count" => 520,
+//         "percentage" => 52
+//     ],
+//     [
+//         "score" => 2,
+//         "count" => 210,
+//         "percentage" => 21
+//     ],
+//     [
+//         "score" => 1,
+//         "count" => 50,
+//         "percentage" => 1
+//     ]        
+//    ];
 });

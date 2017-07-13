@@ -12,10 +12,10 @@
                         <div class="col-md-3">
     
                             <div class="RatingAverage__Label">
-                                <span class="larger">4.5</span> out of 5</div>
+                                <span class="larger">{{ average }}</span> out of 5</div>
                             <div class="RatingAverage__Stars">
     
-                               <star-rating :score="3.5" font-size="1.7em" color="#ffc120" />
+                               <star-rating :score="average" font-size="1.7em" color="#ffc120" />
 
                             </div>
     
@@ -25,11 +25,7 @@
     
                             <div class="RatingAverage__Breakdown">
     
-                                <RatingProgress label="5 stars" count="320" progress="90%" />
-                                <RatingProgress label="4 stars" count="287" progress="65%" />
-                                <RatingProgress label="3 stars" count="201" progress="40%" />
-                                <RatingProgress label="2 stars" count="120" progress="20%" />
-                                <RatingProgress label="1 star" count="10" progress="1%" />
+                                <RatingProgress v-bind:key="index" v-for="(score, index) in scores" :score="score" />
     
                             </div>
     
@@ -46,9 +42,7 @@
                 </div>
     
                 <div class="Reviews__Content">
-    
-                    <CustomerReview :key="review.id" v-for="review in reviews" :review="review" />
-    
+                    <CustomerReview :key="review.id" v-for="review in reviews" :review="review" />    
                 </div>
     
             </div>
@@ -67,6 +61,12 @@ export default {
     computed: {
         reviews () {
             return this.$store.state.reviews
+        },
+        scores () {
+            return this.$store.state.scores
+        },
+        average () {
+            return this.$store.state.average
         }
     },
     components: {
@@ -74,9 +74,10 @@ export default {
         CustomerReview,
         StarRating
     },
-    mounted() {
+    created() {
         console.log('Reviews mounted.')
         this.$store.dispatch('fetchReviews', 20)
+        this.$store.dispatch('fetchScores')
     }
 }
 </script>

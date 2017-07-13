@@ -27,7 +27,8 @@ $factory->define(App\Review::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->realText(50),
         'body' => $faker->realText(500),
-        'score' => $faker->numberBetween(0, 5),
+        'score' => $faker->randomElement([0, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]),
+        'published_at' => $faker->dateTimeBetween('-30 days', 'now'),
         'user_name' => $faker->userName()
     ];
 });

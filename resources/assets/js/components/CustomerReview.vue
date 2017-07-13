@@ -3,7 +3,7 @@
     
         <h3 class="CustomerReview__Title">
             {{ review.title }}
-            <small class="CustomerReview__Date">XX/XX/XXXX</small>
+            <small class="CustomerReview__Date">{{ createdAt }}</small>
         </h3>
     
         <star-rating :score="review.score" font-size="1.3em" />
@@ -21,8 +21,15 @@
 
 <script>
 import StarRating from './StarRating'
+import moment from 'moment'
+
 export default {
     props: ['review'],
+    computed: {
+        createdAt () {
+            return moment(this.review.published_at).format("MMM Do, hA")
+        }
+    },
     components: {
         StarRating
     }
