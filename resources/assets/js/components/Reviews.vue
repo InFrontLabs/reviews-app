@@ -1,84 +1,70 @@
 <template>
-    <div class="container">
-        <div class="Reviews">
-            <div class="Reviews__Header">
-                <h2 class="Reviews__Header__Heading">Customer Reviews</h2>
-                <div class="brand">Created by <img class="logo" :src="require('sass/infrontlabs-logo8.svg')" /></div>
-            </div>
-            <div class="Reviews__Main">
-                <div class="RatingAverage">
-    
-                    <div class="row">
-                        <div class="col-md-3">
-    
-                            <div class="RatingAverage__Label">
-                                <span class="larger">{{ average }}</span> out of 5</div>
-                            <div class="RatingAverage__Stars">
-    
-                               <star-rating :score="average" font-size="1.7em" color="#ffc120" />
-
-                            </div>
-    
-                        </div>
-    
-                        <div class="col-md-5">
-    
-                            <div class="RatingAverage__Breakdown">
-    
-                                <RatingProgress v-bind:key="index" v-for="(score, index) in scores" :score="score" />
-    
-                            </div>
-    
-                        </div>
-    
-                        <div class="col-md-4">
-    
-                            <button class="btn btn-primary btn-lg">Write a Review</button>
-    
-                        </div>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="Reviews__Content">
-                    <CustomerReview :key="review.id" v-for="review in reviews" :review="review" />    
-                </div>
-    
-            </div>
+  <div class="container">
+    <div class="Reviews">
+      <div class="Reviews__Header">
+        <h2 class="Reviews__Header__Heading">Customer Reviews</h2>
+        <div class="brand">Created by
+          <img class="logo" :src="require('sass/infrontlabs-logo8.svg')" />
         </div>
+      </div>
+      <div class="Reviews__Main">
+        <div class="RatingAverage">
+
+          <div class="row">
+            <div class="col-md-3">
+
+              <div class="RatingAverage__Label">
+                <span class="larger">{{ average }}</span> out of 5</div>
+              <div class="RatingAverage__Stars">
+
+                <star-rating :score="average" font-size="1.7em" color="#ffc120" />
+
+              </div>
+
+            </div>
+
+            <div class="col-md-5">
+
+              <div class="RatingAverage__Breakdown">
+
+                <RatingProgress v-bind:key="index" v-for="(score, index) in scores" :score="score" />
+
+              </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="Reviews__Content">
+          <CustomerReview :key="review.id" v-for="review in reviews" :review="review" />
+        </div>
+
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 import RatingProgress from './RatingProgress'
 import CustomerReview from './CustomerReview'
 import StarRating from './StarRating'
 
 export default {
-    computed: {
-        reviews () {
-            return this.$store.state.reviews
-        },
-        scores () {
-            return this.$store.state.scores
-        },
-        average () {
-            return this.$store.state.average
-        }
-    },
-    components: {
-        RatingProgress,
-        CustomerReview,
-        StarRating
-    },
-    created() {
-        console.log('Reviews mounted.')
-        this.$store.dispatch('fetchReviews', 20)
-        this.$store.dispatch('fetchScores')
-    }
+  props: ['reviews', 'scores', 'average'],
+  components: {
+    RatingProgress,
+    CustomerReview,
+    StarRating
+  }
 }
 </script>
 

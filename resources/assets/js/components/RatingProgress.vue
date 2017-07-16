@@ -1,7 +1,9 @@
 <template>
     <div class="RatingProgress">
         <span class="RatingProgress__Label">
-            {{ score.score }} stars
+            {{ score.score }}
+            <span v-if="score.score == 1">star</span>
+            <span v-else>stars</span>
         </span>
         <div class="RatingProgress__Bkg">
             <div class="RatingProgress__Bar" role="progressbar" :aria-valuenow="score.percentage" aria-valuemin="0" aria-valuemax="100" :style="{ width: `${score.percentage}%` }">

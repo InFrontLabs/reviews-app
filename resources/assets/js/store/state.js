@@ -1,4 +1,5 @@
-export default {
+const defaultState = {
+  authenticated: false,
   reviews: [],
   average: 0,
   scores: [{
@@ -27,3 +28,5 @@ export default {
     percentage: 0
   }]
 }
+
+export default defaultState

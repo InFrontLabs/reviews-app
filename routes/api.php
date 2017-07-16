@@ -27,12 +27,12 @@ Route::get('/reviews', function (Request $request) {
 
 Route::get('/scores', function (Request $request) {
 
-    $average = App\Review::where('score', '>', 0)->avg('score');
+    $average = App\Review::avg('score');
     $average = round($average * 2) / 2;
 
     $scores = DB::table('reviews')
                      ->select(DB::raw('score, count(*) as count'))
-                     ->where('score', '>', 0)
+                    //  ->where('score', '>', 0)
                      ->groupBy('score')
                      ->orderBy('score', 'desc')
                      ->get();

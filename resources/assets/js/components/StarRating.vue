@@ -15,7 +15,6 @@ export default {
     props: ['score', 'fontSize', 'color'],
     computed: {
         classList() {
-            console.log(this.score)
             let classList = []
             // loop over count
             for (let i = 1; i <= 5; i++) {
